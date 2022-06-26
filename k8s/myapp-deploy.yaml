@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deploy
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myapp
+      release: stabel
+  template:
+    metadata:
+      labels:
+        app: myapp
+        release: stabel
+        env: test
+    spec:
+      containers:
+      - name: myapp
+        image: devops-api:v1.0.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: http
+          containerPort: 8080
