@@ -13,8 +13,7 @@ var (
 func (q *QueryIPController) Get() {
 
 	ip := q.GetString("ip")
-	qip := common.NewQueryIP("data/ip2region.db")
-	r, err := qip.Query(ip)
+	r, err := common.QueryIPInfo(ip)
 	if err != nil {
 		q.JsonError(queryIPEntryType, fmt.Sprintf("%s", err), StringMap{}, true)
 		return
