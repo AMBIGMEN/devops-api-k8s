@@ -105,15 +105,7 @@ func (b *BaseController) Prepare() {
 
 	uniqueID := b.Ctx.Input.Header(UniQueIDName)
 	if uniqueID == "" {
-		uid, err := uuid.NewV4()
-		if err != nil {
-			common.GetLogger().Error(map[string]interface{}{
-				"entryType": "Get UUID",
-			}, fmt.Sprintf("%s", err))
-			uniqueID = ""
-		} else {
-			uniqueID = fmt.Sprintf("%s", uid)
-		}
+		uniqueID = fmt.Sprintf("%s", uuid.NewV4())
 	}
 	b.Data[UniQueIDName] = uniqueID
 
