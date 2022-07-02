@@ -12,6 +12,7 @@ require (
 	github.com/chanyipiaomiao/weixin-kit v0.0.0-20180320122215-c8e3cb41d36d
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect
 	github.com/fastly/go-utils v0.0.0-20180712184237-d95a45783239 // indirect
+	github.com/go-redis/redis v6.14.2+incompatible
 	github.com/jehiah/go-strftime v0.0.0-20171201141054-1d33003b3869 // indirect
 	github.com/jonboulle/clockwork v0.3.0 // indirect
 	github.com/lestrrat/go-envload v0.0.0-20180220120943-6ed08b54a570 // indirect

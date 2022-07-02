@@ -48,6 +48,11 @@ func init() {
 			beego.NSNamespace("/version",
 				beego.NSRouter("", &controllers.VersionController{}),
 			),
+			beego.NSNamespace("/test",
+				beego.NSRouter("/set", &controllers.RedisController{}, "post:RedisSetKeyApi"),
+				beego.NSRouter("/get", &controllers.RedisController{}, "get:RedisGetKeyApi"),
+				beego.NSRouter("/del", &controllers.RedisController{}, "post:RedisDelKeyApi"),
+			),
 		),
 	)
 	beego.AddNamespace(apins)
