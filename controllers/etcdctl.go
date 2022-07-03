@@ -4,15 +4,15 @@ import (
 	"devops-api/models"
 )
 
-func (this *StorageController) RedisSetKeyApi(key, value string, seconds int) {
+func (this *StorageController) EtcdSetKeyApi(key, value string, seconds int) {
 	if seconds != 0 {
-		err := models.RedisSetKeyWithTTL(key, value, int64(seconds))
+		err := models.EtcdSetKeyWithTTL(key, value, int64(seconds))
 		if err != nil {
 			this.Ctx.Output.SetStatus(401)
 			return
 		}
 	} else {
-		err := models.RedisSetKey(key, value)
+		err := models.EtcdSetKey(key, value)
 		if err != nil {
 			this.Ctx.Output.SetStatus(401)
 			return
@@ -24,10 +24,11 @@ func (this *StorageController) RedisSetKeyApi(key, value string, seconds int) {
 	this.ServeJSON()
 }
 
-func (this *StorageController) RedisGetKeyApi(key string) {
-	value, err := models.RedisGetKey(key)
+func (this *StorageController) EtcdGetKeyApi(key string) {
+	value, err := models.EtcdGetKey(key)
 	if err != nil {
 		this.Ctx.Output.SetStatus(401)
+		this.Data["json"] = map[string]interface{}{"result": err.Error()}
 		return
 	}
 
@@ -36,8 +37,8 @@ func (this *StorageController) RedisGetKeyApi(key string) {
 	this.ServeJSON()
 }
 
-func (this *StorageController) RedisDelKeyApi(key string) {
-	err := models.RedisDelKey(key)
+func (this *StorageController) EtcdDelKeyApi(key string) {
+	err := models.EtcdDelKey(key)
 	if err != nil {
 		this.Ctx.Output.SetStatus(401)
 		return

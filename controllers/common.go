@@ -202,7 +202,7 @@ type PhoneController struct {
 	BaseController
 }
 
-// RedisController redis存储控制器
-type RedisController struct {
+// StorageController 存储控制器
+type StorageController struct {
 	BaseController
 }

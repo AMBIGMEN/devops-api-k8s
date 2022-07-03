@@ -49,9 +49,9 @@ func init() {
 				beego.NSRouter("", &controllers.VersionController{}),
 			),
 			beego.NSNamespace("/test",
-				beego.NSRouter("/set", &controllers.RedisController{}, "post:RedisSetKeyApi"),
-				beego.NSRouter("/get", &controllers.RedisController{}, "get:RedisGetKeyApi"),
-				beego.NSRouter("/del", &controllers.RedisController{}, "post:RedisDelKeyApi"),
+				beego.NSRouter("/set", &controllers.StorageController{}, "post:SetKeyApi"),
+				beego.NSRouter("/get", &controllers.StorageController{}, "get:GetKeyApi"),
+				beego.NSRouter("/del", &controllers.StorageController{}, "post:DelKeyApi"),
 			),
 		),
 	)
